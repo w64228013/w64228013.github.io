@@ -6,39 +6,14 @@
     <meta name="description" content="{{ site.description }}">
     <meta name="keywords"  content="{{ site.keyword }}">
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-          tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            inlineMath: [['$','$']]
-          }
-        });
-      </script>
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-      
-    <!-- <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            tex2jax: {
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-            }
-        });
-        
-        MathJax.Hub.Queue(function() {
-            var all = MathJax.Hub.getAllJax(), i;
-            for(i=0; i < all.length; i += 1) {
-                all[i].SourceElement().parentNode.className += ' has-jax';
-            }
-        });
-    </script>      
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script> -->
-       
+    
     <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ site.baseurl }}/img/robot_star_wars.ico">
+    <link rel="shortcut icon" href="{{ site.baseurl }}/img/header.ico">
 
     <!-- Safari Webpage Icon    by-BY -->
     <link rel="apple-touch-icon" href="{{ site.baseurl }}/img/apple-touch-icon.png">
@@ -76,5 +51,13 @@
     <![endif]-->
 
     <!-- ga & ba script hoook -->
+    <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      inlineMath: [['$','$']]
+        }
+    });
+    </script> <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
     <script></script>
 </head>
