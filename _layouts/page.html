@@ -190,6 +190,7 @@ layout: default
                         {% endif %}
                     </div>
                 </section>
+
                 <!-- Friends Blog -->
                 {% if site.friends %}
                 <hr>
@@ -200,24 +201,11 @@ layout: default
                     {% endfor %}
                 </ul>
                 {% endif %}
-                                <!-- Featured Tags -->
-                {% if site.featured-tags %}
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        {% for tag in site.tags %}
-                            {% if tag[1].size > {{site.featured-condition-size}} %}
-                                <a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                    {{ tag[0] }}
-                                </a>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </section>
-                {% endif %}
+
                 <!--add vistor-->
                 <section>
+                        <hr>
+                        <h5>VIEWS</h5>
                         <script type="text/javascript" src="//rf.revolvermaps.com/0/0/1.js?i=5st6zr4x8hw&amp;s=180&amp;m=8&amp;v=false&amp;r=false&amp;b=000000&amp;n=false&amp;c=ff0000" async="async"></script>
                 </section>
                 
