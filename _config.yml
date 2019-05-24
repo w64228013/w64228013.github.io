@@ -100,13 +100,14 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "Taospirit",
-        href: "https://github.com/Taospirit"
+      title: "CSDN cheetaher",
+      href: "https://blog.csdn.net/cheapter"
+
     },{
-        title: "CSDN cheetaher",
-        href: "https://blog.csdn.net/cheapter"
+      itle: "Taospirit",
+      href: "https://github.com/Taospirit"
     },{
-        title: "ShiyuChen",
-        href: "https://www.chenshiyu.top/"
+      title: "ShiyuChen",
+      href: "https://www.chenshiyu.top/"
     }
 ]
