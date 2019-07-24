@@ -145,7 +145,7 @@ for i in range(1000):
         print(sess.run(loss, feed_dict={xs: x_data, ys: y_data}))
 ```
 
->for循环里面xs如何更新的?  **for表示训练轮数，每一轮都把所有的数据给处理完。**
+for循环里面xs如何更新的?  **for表示训练轮数，每一轮都把所有的数据给处理完。**
 ---
 
 #### tensorboard 可视化
