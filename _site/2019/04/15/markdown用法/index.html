@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Every failure is leading towards success.">
+    <meta name="keywords"  content="cheetaher">
+    <meta name="theme-color" content="#000000">
+    
+    <title>markdown 简单使用 - cheetaher Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/header.ico">
+
+    <!-- Safari Webpage Icon    by-BY -->
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2019/04/15/markdown%E7%94%A8%E6%B3%95/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      inlineMath: [['$','$']]
+        }
+    });
+    </script> <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">cheetaher Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">AboutMe</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-ios9-web.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-ios9-web.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#markdown" title="markdown">markdown</a>
+                        
+                    </div>
+                    <h1>markdown 简单使用</h1>
+                    
+                    
+                    <h2 class="subheading">markdown的简单使用</h2>
+                    
+                    <span class="meta">Posted by cheetaher on April 15, 2019</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<h3 id="1-斜体和粗体">1. 斜体和粗体</h3>
+
+<p>使用 * 和 ** 表示斜体和粗体。</p>
+
+<p>示例：</p>
+
+<p>这是 <em>斜体</em>，这是 <strong>粗体</strong>。</p>
+
+<h3 id="2-分级标题">2. 分级标题</h3>
+
+<p>使用 === 表示一级标题，使用 — 表示二级标题。</p>
+
+<p>示例：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一个一级标题
+============================
+
+这是一个二级标题
+--------------------------------------------------
+
+### 这是一个三级标题
+</code></pre></div></div>
+
+<p>你也可以选择在行首加井号表示不同级别的标题 (H1-H6)，例如：# H1, ## H2, ### H3，#### H4。</p>
+
+<h3 id="3-外链接">3. 外链接</h3>
+
+<p>使用 [描述](链接地址) 为文字增加外链接。</p>
+
+<p>示例：</p>
+
+<p>这是去往 <a href="https://cnyuzhang.github.io/">本人博客</a> 的链接。</p>
+
+<h3 id="4-无序列表">4. 无序列表</h3>
+
+<p>使用 *，+，- 表示无序列表。</p>
+
+<p>示例：</p>
+
+<ul>
+  <li>无序列表项 一</li>
+  <li>无序列表项 二</li>
+  <li>无序列表项 三</li>
+</ul>
+
+<h3 id="5-有序列表">5. 有序列表</h3>
+
+<p>使用数字和点表示有序列表。</p>
+
+<p>示例：</p>
+
+<ol>
+  <li>有序列表项 一</li>
+  <li>有序列表项 二</li>
+  <li>有序列表项 三</li>
+</ol>
+
+<h3 id="6-文字引用">6. 文字引用</h3>
+
+<p>使用 &gt; 表示文字引用。</p>
+
+<p>示例：</p>
+
+<blockquote>
+  <p>野火烧不尽，春风吹又生。</p>
+</blockquote>
+
+<h3 id="7-行内代码块">7. 行内代码块</h3>
+
+<p>使用 `代码` 表示行内代码块。</p>
+
+<p>示例：</p>
+
+<p>让我们聊聊 <code class="language-plaintext highlighter-rouge">html</code>。</p>
+
+<h3 id="8--代码块">8.  代码块</h3>
+
+<p>使用 四个缩进空格 表示代码块。</p>
+
+<p>示例：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一个代码块，此行左侧有四个不可见的空格。
+</code></pre></div></div>
+
+<h3 id="9--插入图像">9.  插入图像</h3>
+
+<p>使用 ![描述](图片链接地址) 插入图像。</p>
+
+<p>示例：</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/703764-605e3cc2ecb664f6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的头像" /></p>
+
+<h1 id="cmd-markdown-高阶语法手册">Cmd Markdown 高阶语法手册</h1>
+
+<h3 id="1-内容目录">1. 内容目录</h3>
+
+<p>在段落中填写 <code class="language-plaintext highlighter-rouge">[TOC]</code> 以显示全文内容的目录结构。</p>
+
+<p>[TOC]
+github 不支持</p>
+
+<h3 id="2-标签分类">2. 标签分类</h3>
+
+<p>在编辑区任意行的列首位置输入以下代码给文稿标签：</p>
+
+<p>标签： 数学 英语 Markdown</p>
+
+<p>或者</p>
+
+<p>Tags： 数学 英语 Markdown</p>
+
+<h3 id="3-删除线">3. 删除线</h3>
+
+<p>使用 ~~ 表示删除线。</p>
+
+<p><del>这是一段错误的文本。</del></p>
+
+<h3 id="4-注脚">4. 注脚</h3>
+
+<p>使用 [^keyword] 表示注脚。</p>
+
+<p>这是一个注脚<sup id="fnref:footnote" role="doc-noteref"><a href="#fn:footnote" class="footnote">1</a></sup>的样例。</p>
+
+<p>这是第二个注脚<sup id="fnref:footnote2" role="doc-noteref"><a href="#fn:footnote2" class="footnote">2</a></sup>的样例。</p>
+
+<h3 id="5-latex-公式">5. LaTeX 公式</h3>
+
+<p>$ 表示行内公式：</p>
+
+<p>质能守恒方程可以用一个很简洁的方程式 $E=mc^2$ 来表达。</p>
+
+<p>$$ 表示整行公式：</p>
+
+\[\sum_{i=1}^n a_i=0\]
+
+\[f(x_1,x_x,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2\]
+
+\[\sum^{j-1}_{k=0}{\widehat{\gamma}_{kj} z_k}\]
+
+<p>访问 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">MathJax</a> 参考更多使用方法。</p>
+
+<h3 id="6-加强的代码块">6. 加强的代码块</h3>
+
+<p>支持四十一种编程语言的语法高亮的显示，行号显示。</p>
+
+<p>非代码示例：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install vim-gnome
+</code></pre></div></div>
+
+<p>Python 示例：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">requires_authorization</span>
+<span class="k">def</span> <span class="nf">somefunc</span><span class="p">(</span><span class="n">param1</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">param2</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="s">'''A docstring'''</span>
+    <span class="k">if</span> <span class="n">param1</span> <span class="o">&gt;</span> <span class="n">param2</span><span class="p">:</span> <span class="c1"># interesting
+</span>        <span class="k">print</span> <span class="s">'Greater'</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">param2</span> <span class="o">-</span> <span class="n">param1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">None</span>
+
+<span class="k">class</span> <span class="nc">SomeClass</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">message</span> <span class="o">=</span> <span class="s">'''interpreter
+... prompt'''</span>
+</code></pre></div></div>
+
+<p>JavaScript 示例：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* nth element in the fibonacci series.
+* @param n &gt;= 0
+* @return the nth element, &gt;= 0.
+*/</span>
+<span class="kd">function</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">tmp</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">--</span><span class="nx">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">tmp</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
+    <span class="nx">a</span> <span class="o">+=</span> <span class="nx">b</span><span class="p">;</span>
+    <span class="nx">b</span> <span class="o">=</span> <span class="nx">tmp</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">fib</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h3 id="7-流程图">7. 流程图</h3>
+
+<h4 id="示例">示例</h4>
+
+<pre><code class="language-flow">st=&gt;start: Start:&gt;https://www.zybuluo.com
+io=&gt;inputoutput: verification
+op=&gt;operation: Your Operation
+cond=&gt;condition: Yes or No?
+sub=&gt;subroutine: Your Subroutine
+e=&gt;end
+
+st-&gt;io-&gt;op-&gt;cond
+cond(yes)-&gt;e
+cond(no)-&gt;sub-&gt;io
+</code></pre>
+<p><img src="https://camo.githubusercontent.com/e50b0996299d04e390e1de61fb8b4c6b9dc4dbc6/68747470733a2f2f63646f636f2e636f6d2f696d616765732f666c6f772e706e67" alt="" />
+    github不支持流程图</p>
+<h4 id="更多语法参考流程图语法参考by-lkkwxy">更多语法参考：<a href="https://www.jianshu.com/p/b421cc723da5">流程图语法参考(by lkkwxy)</a></h4>
+
+<h3 id="8-序列图">8. 序列图</h3>
+
+<h4 id="示例-1">示例 1</h4>
+
+<pre><code class="language-seq">Alice-&gt;Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob--&gt;Alice: I am good thanks!
+</code></pre>
+<p><img src="https://camo.githubusercontent.com/54398dfd1f0ba2cbb4c9577c255d2a2ac6c8829f/68747470733a2f2f63646f636f2e636f6d2f696d616765732f73657175656e63652e706e67" alt="" />
+ github 也不支持</p>
+<h4 id="示例-2">示例 2</h4>
+
+<pre><code class="language-seq">Title: Here is a title
+A-&gt;B: Normal line
+B--&gt;C: Dashed line
+C-&gt;&gt;D: Open arrow
+D--&gt;&gt;A: Dashed open arrow
+</code></pre>
+
+<h4 id="更多语法参考序列图语法参考by-智胜千军">更多语法参考：<a href="https://blog.csdn.net/zhishengqianjun/article/details/74065232">序列图语法参考(by 智胜千军)</a></h4>
+
+<h3 id="9-甘特图">9. 甘特图</h3>
+
+<p>甘特图内在思想简单。基本是一条线条图，横轴表示时间，纵轴表示活动（项目），线条表示在整个期间上计划和实际的活动完成情况。它直观地表明任务计划在什么时候进行，及实际进展与计划要求的对比。</p>
+
+<pre><code class="language-gantt">    title 项目开发流程
+    section 项目确定
+        需求分析       :a1, 2016-06-22, 3d
+        可行性报告     :after a1, 5d
+        概念验证       : 5d
+    section 项目实施
+        概要设计      :2016-07-05  , 5d
+        详细设计      :2016-07-08, 10d
+        编码          :2016-07-15, 10d
+        测试          :2016-07-22, 5d
+    section 发布验收
+        发布: 2d
+        验收: 3d
+</code></pre>
+
+<h4 id="更多语法参考甘特图语法参考">更多语法参考：<a href="https://knsv.github.io/mermaid/#gant-diagrams">甘特图语法参考</a></h4>
+
+<h3 id="10-mermaid-流程图">10. Mermaid 流程图</h3>
+
+<pre><code class="language-graphLR">    A[Hard edge] --&gt;|Link text| B(Round edge)
+    B --&gt; C{Decision}
+    C --&gt;|One| D[Result one]
+    C --&gt;|Two| E[Result two]
+</code></pre>
+
+<h4 id="更多语法参考mermaid-流程图语法参考">更多语法参考：<a href="https://knsv.github.io/mermaid/#flowcharts-basic-syntax">Mermaid 流程图语法参考</a></h4>
+
+<h3 id="11-mermaid-序列图">11. Mermaid 序列图</h3>
+
+<pre><code class="language-sequence">    Alice-&gt;John: Hello John, how are you?
+    loop every minute
+        John--&gt;Alice: Great!
+    end
+</code></pre>
+
+<h3 id="12-表格支持">12. 表格支持</h3>
+<p>如下：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| 项目        | 价格   |  数量  |
+| --------   | -----:  | :----:  |
+| 计算机     | \$1600 |   5     |
+| 手机        |   \$12   |   12   |
+| 管线        |    \$1    |  234  |
+</code></pre></div></div>
+<p>显示效果：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th style="text-align: right">价格</th>
+      <th style="text-align: center">数量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>计算机</td>
+      <td style="text-align: right">$1600</td>
+      <td style="text-align: center">5</td>
+    </tr>
+    <tr>
+      <td>手机</td>
+      <td style="text-align: right">$12</td>
+      <td style="text-align: center">12</td>
+    </tr>
+    <tr>
+      <td>管线</td>
+      <td style="text-align: right">$1</td>
+      <td style="text-align: center">234</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="13-定义型列表">13. 定义型列表</h3>
+
+<dl>
+  <dt>名词 1</dt>
+  <dd>定义 1（左侧有一个可见的冒号和四个不可见的空格）</dd>
+  <dt>代码块 2</dt>
+  <dd>这是代码块的定义（左侧有一个可见的冒号和四个不可见的空格）
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>代码块（左侧有八个不可见的空格）
+</code></pre></div>    </div>
+  </dd>
+</dl>
+
+<h3 id="14-html-标签">14. Html 标签</h3>
+
+<p>Markdown 语法中嵌套 Html 标签，譬如，你可以用 Html 写一个纵跨两行的表格：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th rowspan="2"&gt;值班人员&lt;/th&gt;
+        &lt;th&gt;星期一&lt;/th&gt;
+        &lt;th&gt;星期二&lt;/th&gt;
+        &lt;th&gt;星期三&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;李强&lt;/td&gt;
+        &lt;td&gt;张明&lt;/td&gt;
+        &lt;td&gt;王平&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre></div></div>
+
+<table>
+    <tr>
+        <th rowspan="2">值班人员</th>
+        <th>星期一</th>
+        <th>星期二</th>
+        <th>星期三</th>
+    </tr>
+    <tr>
+        <td>李强</td>
+        <td>张明</td>
+        <td>王平</td>
+    </tr>
+</table>
+
+<h3 id="15-内嵌图标">15. 内嵌图标</h3>
+
+<p>本站的图标系统对外开放，在文档中输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;i class="icon-weibo"&gt;&lt;/i&gt;
+</code></pre></div></div>
+
+<p>即显示微博的图标： <i class="icon-weibo icon-2x"></i></p>
+
+<p>替换 上述 <code class="language-plaintext highlighter-rouge">i 标签</code> 内的 <code class="language-plaintext highlighter-rouge">icon-weibo</code> 以显示不同的图标，例如：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;i class="icon-renren"&gt;&lt;/i&gt;
+</code></pre></div></div>
+
+<p>即显示人人的图标： <i class="icon-renren icon-2x"></i></p>
+
+<p>更多的图标和玩法可以参看 <a href="http://fortawesome.github.io/Font-Awesome/3.2.1/icons/">font-awesome</a> 官方网站。</p>
+
+<h3 id="16-待办事宜-todo-列表">16. 待办事宜 Todo 列表</h3>
+
+<p>使用带有 [ ] 或 [x] （未完成或已完成）项的列表语法撰写一个待办事宜列表，并且支持子列表嵌套以及混用Markdown语法，例如：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- [ ] **Cmd Markdown 开发**
+    - [ ] 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率
+    - [ ] 支持以 PDF 格式导出文稿
+    - [x] 新增Todo列表功能 [语法参考](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments)
+    - [x] 改进 LaTex 功能
+        - [x] 修复 LaTex 公式渲染问题
+        - [x] 新增 LaTex 公式编号功能 [语法参考](http://docs.mathjax.org/en/latest/tex.html#tex-eq-numbers)
+- [ ] **七月旅行准备**
+    - [ ] 准备邮轮上需要携带的物品
+    - [ ] 浏览日本免税店的物品
+    - [x] 购买蓝宝石公主号七月一日的船票
+</code></pre></div></div>
+
+<p>对应显示如下待办事宜 Todo 列表：</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Cmd Markdown 开发</strong>
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />支持以 PDF 格式导出文稿</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />新增Todo列表功能 <a href="https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments">语法参考</a></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />改进 LaTex 功能
+        <ul class="task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />修复 LaTex 公式渲染问题</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />新增 LaTex 公式编号功能 <a href="http://docs.mathjax.org/en/latest/tex.html#tex-eq-numbers">语法参考</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>七月旅行准备</strong>
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />准备邮轮上需要携带的物品</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />浏览日本免税店的物品</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />购买蓝宝石公主号七月一日的船票</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:footnote" role="doc-endnote">
+      <p>这是一个 <em>注脚</em> 的 <strong>文本</strong>。 <a href="#fnref:footnote" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:footnote2" role="doc-endnote">
+      <p>这是另一个 <em>注脚</em> 的 <strong>文本</strong>。 <a href="#fnref:footnote2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/04/19/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83%E7%9A%84tensorflow%E5%AE%9E%E7%8E%B0/" data-toggle="tooltip" data-placement="top" title="神经网络训练的tensorflow实现">
+                        Next<br>
+                        <span>神经网络训练的tensorflow实现</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+                <!-- LiveRe City install code -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC80NDE2NS8yMDY5OA==">
+                        <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+                        
+                            if (typeof LivereTower === 'function') { return; }
+                        
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+                        
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                        </script>
+                        <noscript>Please activate JavaScript for write a comment in LiveRe</noscript>
+                        </div>
+                <!-- completed City install code -->
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="https://blog.csdn.net/cheapter">CSDN cheetaher</a></li>
+                    
+                        <li><a href="https://github.com/Taospirit">Taospirit</a></li>
+                    
+                        <li><a href="https://www.chenshiyu.top/">ShiyuChen</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <!-- add jianshu add target = "_blank" to <a> by BY -->
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/cheetaher">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/CNyuzhang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; cheetaher Blog 2020
+                    <br>
+                    Theme on <a href="">GitHub</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=CNyuzhang&repo=CNyuzhang.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script type="text/javascript">
+    if(navigator.serviceWorker){
+        // For security reasons, a service worker can only control the pages that are in the same directory level or below it. That's why we put sw.js at ROOT level.
+        navigator.serviceWorker
+            .register('/sw.js')
+            .then((registration) => {console.log('Service Worker Registered. ', registration)})
+            .catch((error) => {console.log('ServiceWorker registration failed: ', error)})
+    }
+</script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/ 
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers   
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/apple-touch-icon.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
