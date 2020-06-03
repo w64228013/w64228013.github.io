@@ -230,50 +230,50 @@ Goeddel等人最近的一项工作$^{[6]}$ 提出了一种从3D LiDAR数据中�
 在图2.1中，右边为3D世界真实点，左边为相机获得的图像平面上的点。O为模型中的针孔[8]。由于图像是二维平面，因此还有Y坐标，根据相似三角形，有：
 \(\frac{Z}{f} = -\frac{X}{X^{'}}=-\frac{Y}{Y^{'} }\)
 在这里，图像平面不能表示图像的像素平面坐标，因此，定义像素坐标系o-u-v，而像素坐标是可以直接在图像文件中获得的。通常，像素平面的坐标原点为图像左上角，而图像平面的坐标原点为图像中心，因此两个坐标系存在一个尺度变换和一个平移变换，像素平面o-u-v和图像平面O-X’-Y’的转换关系为：
-[\left{ \begin{matrix}
-   {u=\alpha X^{‘}+c_x}  <br />
-   {v=\beta Y^{‘}+c_y}  <br />
-\end{matrix} \right.]</p>
+\(\left\{ \begin{matrix}
+   {u=\alpha X^{'}+c_x}  \\
+   {v=\beta Y^{'}+c_y}  \\
+\end{matrix} \right.\)</p>
 
 <p>简化模型，转换坐标系，去掉式(2-1)中的负号，并代入式(2-2)，有：
-[\left{ \begin{matrix}
-   {u=\alpha f_x \frac{X}{Y}+c_x}  <br />
-   {v=\beta f_y \frac{Y}{Z}+c_y}  <br />
-\end{matrix} \right.]
+\(\left\{ \begin{matrix}
+   {u=\alpha f_x \frac{X}{Y}+c_x}  \\
+   {v=\beta f_y \frac{Y}{Z}+c_y}  \\
+\end{matrix} \right.\)
 转化为矩阵形式有：
-[Z\left( \begin{matrix}
-   u  <br />
-   v  <br />
-   1  <br />
+\(Z\left( \begin{matrix}
+   u  \\
+   v  \\
+   1  \\
 \end{matrix} \right)=\left( \begin{matrix}
-   {f_x} &amp; {0} &amp; {c_x}  <br />
-   {0} &amp; {f_y} &amp; {c_y}  <br />
-   {0} &amp; {0} &amp; {1}  <br />
+   {f_x} &amp; {0} &amp; {c_x}  \\
+   {0} &amp; {f_y} &amp; {c_y}  \\
+   {0} &amp; {0} &amp; {1}  \\
 \end{matrix} \right)\left( \begin{matrix}
-   {X}  <br />
-   {Y}  <br />
-   {Z}  <br />
-\end{matrix} \right)\triangleq KP]
+   {X}  \\
+   {Y}  \\
+   {Z}  \\
+\end{matrix} \right)\triangleq KP\)
 在式(2-4)中，中间的3×3的矩阵被称为相机的内参矩阵K，内参矩阵反映了3D真实点到图像像素平面的变换关系。通常，相机在出厂后就已经标定好内参了，但是，由于一些外力和机械因素，内参可能会有些许变化。另一方面，当选择让相机输出不同分辨率的时候，内参矩阵也会发生变化，这种变化一般是与分辨率成线性关系的。</p>
 
 <h4 id="22-相机外参">2.2 相机外参</h4>
 <p>相机在三维世界中移动的是一个刚体运动，只有平移和旋转上的变换，没有尺度上的变换，因此属于欧氏变换$^{[9]}$，如图2.2，w下标的是世界坐标系，c下标的是相机坐标系.
 <img src="../img/ORBSLAM/odom.png" alt="" />
 使用旋转矩阵R与平移矩阵t表示这一变化如式2.5。
-[\left( \begin{matrix}
-   x_w  <br />
-   y_w  <br />
-   z_w  <br />
-   1    <br />
+\(\left( \begin{matrix}
+   x_w  \\
+   y_w  \\
+   z_w  \\
+   1    \\
 \end{matrix} \right)=\left( \begin{matrix}
-   {R} &amp; {t}   <br />
-   {0} &amp; {1}   <br />
+   {R} &amp; {t}   \\
+   {0} &amp; {1}   \\
 \end{matrix} \right)=T\left( \begin{matrix}
-   {X}  <br />
-   {Y}  <br />
-   {Z}  <br />
-   {1}  <br />
-\end{matrix} \right)]
+   {X}  \\
+   {Y}  \\
+   {Z}  \\
+   {1}  \\
+\end{matrix} \right)\)
 其中T表示旋转平移矩阵，也就是相机的外参。相机的外参也就是相对于世界坐标系的欧氏变换矩阵，它描述了相机相对于世界坐标系的相对位置和姿态，也就是平移和旋转量。我们要做的定位系统实际上就是为了实时求得相机的外参矩阵，如何求解这个矩阵是整个系统的核心问题.</p>
 
 <h4 id="23-相机标定">2.3 相机标定</h4>
@@ -286,15 +286,15 @@ Goeddel等人最近的一项工作$^{[6]}$ 提出了一种从3D LiDAR数据中�
 | $C_X$ | 320.1 | 
 | $C_Y$ | 247.6 |
 所以相机内参矩阵为：
-[\left( \begin{matrix}
-   {f_x} &amp; {0} &amp; {c_x}  <br />
-   {0} &amp; {f_y} &amp; {c_y}  <br />
-   {0} &amp; {0} &amp; {1}      <br />
+\(\left( \begin{matrix}
+   {f_x} &amp; {0} &amp; {c_x}  \\
+   {0} &amp; {f_y} &amp; {c_y}  \\
+   {0} &amp; {0} &amp; {1}      \\
 \end{matrix} \right)=\left( \begin{matrix}
-   {535.4} &amp; {0} &amp; {320.1}  <br />
-   {0} &amp; {539.2} &amp; {247.6}  <br />
-   {0} &amp; {0} &amp; {1}      <br />
-\end{matrix} \right)]</p>
+   {535.4} &amp; {0} &amp; {320.1}  \\
+   {0} &amp; {539.2} &amp; {247.6}  \\
+   {0} &amp; {0} &amp; {1}      \\
+\end{matrix} \right)\)</p>
 
 <h2 id="三算法介绍">三、算法介绍</h2>
 <p>主要介绍使用视觉进行SLAM时所使用的主要算法。包括特征的提取，特征的匹配以及如何根据匹配特征求解位姿。</p>
@@ -331,9 +331,9 @@ SIFT首先建立DOG尺度空间，尺度空间的建立是通过将原图像经�
 
 <h4 id="35-位姿求解">3.5 位姿求解</h4>
 <p>上一节介绍两帧图像之间进行匹配的方法，知道两帧图像之间的关系之后就可以根据这一关系求解出相机在运动中的位姿变换。通过ORB特征进行了帧间相应点的匹配，获得的匹配点具有深度信息，通过匹配点的3D点来计算运动中的位姿变化。假设有一组匹配好的3D点：
-[P=\left{ {p_1,…,p_n} \right},P^{‘}=\left{ {p_1^{‘},…,p_n^{‘}} \right}]
+\(P=\left\{ {p_1,...,p_n} \right\},P^{'}=\left\{ {p_1^{'},...,p_n^{'}} \right\}\)
 对于任意的匹配点，都有相同的欧氏变换R，t：
-[\forall i,{ {p}<em>{i}}=Rp</em>{i}^{t}+t]
+\(\forall i,{ {p}_{i}}=Rp_{i}^{t}+t\)
 上述问题可以用ICP(Iterative Clotest Point,迭代就近点)[12]算法求解。在上一节中，特征点法较好的求解了两帧图像之间的匹配关系，所以，可以用ICP求解相机运动中的位姿变换。ICP的求解分为两种方式：使用线性代数求解，最常用的是SVD（singular value decomposition，奇异值分解）和使用非线性优化方式求解。</p>
 
 <h2 id="四3d点云地图的构建">四、3D点云地图的构建</h2>
