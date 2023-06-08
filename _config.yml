@@ -5,7 +5,7 @@ header-img: img/cheetah.jpg
 email: xyzzhangyu@gmail.com
 description: "Every failure is leading towards success."
 keyword: "cheetaher"
-url: "http://chuanfei.github.io"          # your host, for absolute URL
+url: "https://chuanfei.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 #github_repo: "https://github.com/qiubaiying/qiubaiying.github.io.git" # you code repository
 
