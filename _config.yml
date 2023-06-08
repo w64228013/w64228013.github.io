@@ -5,7 +5,7 @@ header-img: img/cheetah.jpg
 email: xyzzhangyu@gmail.com
 description: "Every failure is leading towards success."
 keyword: "cheetaher"
-url: "http://CNyuzhang.github.io"          # your host, for absolute URL
+url: "http://chuanfei.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 #github_repo: "https://github.com/qiubaiying/qiubaiying.github.io.git" # you code repository
 
@@ -17,7 +17,7 @@ sidebar-avatar: /img/my_header.jpeg      # use absolute URL, seeing it's used in
 # SNS settings
 RSS: false
 zhihu_username:     cheetaher
-github_username:    CNyuzhang
+github_username:    w64228013
 
 
 
